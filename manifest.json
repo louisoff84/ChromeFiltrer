@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "ChromeFiltrer",
+  "version": "1.0.0",
+  "description": "Filtre léger et personnalisable pour améliorer la navigation sur le web.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "ChromeFiltrer",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_start",
+    "all_frames": false
+  }]
+}
