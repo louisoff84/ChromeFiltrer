@@ -1,34 +1,29 @@
-# ChromeFiltrer
+# ChromeFiltrer v2
 
-Extension Chrome Manifest V3 légère pour filtrer les éléments gênants pendant la navigation.
+Extension Chrome Manifest V3 avec moteur de filtrage et panel de gestion entièrement local.
 
-## v1.0.0
+## Panel local
 
-- activation/désactivation instantanée
-- masquage d'éléments publicitaires courants
-- réduction des popups et overlays
-- détection simple du contenu sponsorisé
-- filtre optionnel des bannières cookies
-- liste personnalisée de mots bloqués
-- sélecteurs CSS personnalisés
-- paramètres synchronisés avec `chrome.storage.sync`
-- prise en charge des pages dynamiques via `MutationObserver`
-- mises à jour regroupées avec `requestAnimationFrame`
-- aucune dépendance et aucun serveur externe
-- interface popup + page d'options
+Le panel permet de gérer la protection, les filtres, les mots et sélecteurs personnalisés, whitelist/blacklist, profils Léger/Normal/Strict, statistiques locales, sauvegardes JSON et diagnostic.
 
-## Installation locale
+## Optimisations
 
-1. Télécharger ou cloner le dépôt.
+- `MutationObserver` au lieu d'un polling permanent
+- traitements regroupés avec `requestAnimationFrame`
+- règles compilées et paramètres chargés une seule fois par page
+- statistiques agrégées par domaine
+- aucune API distante
+- aucune dépendance JavaScript
+- stockage `chrome.storage.sync` pour la configuration
+- stockage `chrome.storage.local` pour statistiques et données locales
+- interface responsive
+
+## Installation
+
+1. Télécharger le dépôt.
 2. Ouvrir `chrome://extensions`.
 3. Activer **Mode développeur**.
-4. Cliquer sur **Charger l'extension non empaquetée**.
-5. Sélectionner le dossier du projet.
+4. Choisir **Charger l'extension non empaquetée**.
+5. Sélectionner le dossier ChromeFiltrer.
 
-## Confidentialité
-
-ChromeFiltrer n'envoie pas l'historique de navigation vers un serveur. Les règles sont appliquées localement dans le navigateur.
-
-## Performance
-
-Le moteur évite le polling permanent : il observe les changements du DOM et regroupe les nouveaux traitements sur une frame afin de limiter le travail inutile.
+> La v2 pose l'architecture du panel pour accueillir progressivement les modules avancés sans transformer l'extension en un script monolithique.
